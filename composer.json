@@ -1,0 +1,16 @@
+{
+    "name": "drips/MVC",
+    "description": "PHP basiertes MVC-System",
+    "keywords": ["mvc", "model", "view", "controller"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4",
+        "drips/http": ">=0.2",
+        "drips/utils": ">=0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drips\\MVC\\": "src"
+        }
+    }
+}
