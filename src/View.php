@@ -29,4 +29,5 @@ class View
             return $this->assigns[$key];
         }
     }
+
 }
