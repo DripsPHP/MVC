@@ -2,32 +2,18 @@
 
 namespace Drips\MVC;
 
-class View
+use Smarty;
+
+class View extends Smarty
 {
-    private $assigns = array();
+    public static $tmp_dir = "tmp/.views/";
 
-    public function has($key)
-    {
-        return array_key_exists($key, $this->assigns);
+    public function __construct(){
+        parent::__construct();
+        // configure smarty
+        $this->setTemplateDir(static::$tmp_dir.'/templates/');
+        $this->setCompileDir(static::$tmp_dir.'/templates_c/');
+        $this->setConfigDir(static::$tmp_dir.'/configs/');
+        $this->setCacheDir(static::$tmp_dir.'/cache/');
     }
-
-    public function assign($key, $value)
-    {
-        $this->assigns[$key] = $value;
-    }
-
-    public function remove($key)
-    {
-        if ($this->has($key)) {
-            unset($this->assigns[$key]);
-        }
-    }
-
-    public function get($key)
-    {
-        if($this->has($key)){
-            return $this->assigns[$key];
-        }
-    }
-
 }

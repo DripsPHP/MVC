@@ -9,8 +9,15 @@ class MyController extends Controller
 {
     public function getAction(Request $request){
         echo "Hello World!";
+        $this->smartyTest();
         echo "<pre>";
         var_dump($request);
+    }
+
+    protected function smartyTest()
+    {
+        $this->view->assign("msg", "Herzlich willkommen!");
+        $this->view->display("test.tpl");
     }
 }
 
