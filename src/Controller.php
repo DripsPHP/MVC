@@ -1,15 +1,35 @@
 <?php
 
+/**
+ * Created by Prowect
+ * Author: Raffael Kessler
+ * Date: 02.04.2016 - 10:58.
+ * Copyright Prowect.
+ */
+
 namespace Drips\MVC;
 
 use Drips\HTTP\Response;
 use Drips\Utils\OutputBuffer;
 
+/**
+ * Class Controller.
+ *
+ * Diese Klasse ist Bestandteil des MVC-Systems von Drips. Der Controller ist
+ * zuständig für die Abarbeitung von eingehenden Requests und sollte dafür
+ * mit den zugehörigen Models und Views zusammenarbeiten.
+ */
 abstract class Controller
 {
     protected $view;
     protected $response;
 
+    /**
+     * Erzeugt eine neue Controller-Instanz.
+     *
+     * @param string $name Request-Type (GET, POST, ...)
+     * @param array $params Parameter die an den jeweiligen Funktionsaufruf des Controllers übergeben werdens sollen (üblicherweise ein Request-Objekt)
+     */
     public function __construct($name, $params = array())
     {
         $this->view = new View();

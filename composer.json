@@ -1,5 +1,5 @@
 {
-    "name": "drips/MVC",
+    "name": "drips/mvc",
     "description": "PHP basiertes MVC-System",
     "keywords": ["mvc", "model", "view", "controller"],
     "license": "MIT",
