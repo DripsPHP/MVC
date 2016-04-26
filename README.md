@@ -41,6 +41,8 @@ class MyController extends Controller
 $controller = new MyController($_SERVER["REQUEST_METHOD"], array(new Request));
 ```
 
+> Üblicherweise werden Model und Controller in separaten Dateien gespeichert.
+
 Die View ist ein einfaches Template, in welchem Platzhalter definiert werden können, die anschließend entsprechend ersetzt werden.
 
 ```html
