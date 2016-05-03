@@ -12,6 +12,7 @@ abstract class CompileController extends Controller
     protected $target_directory = "tmp/compile";
     protected $file_extension;
     protected $response_type;
+    protected $caching = false;
 
     public function getAction(Request $request, $file)
     {
@@ -38,8 +39,12 @@ abstract class CompileController extends Controller
         if(!file_exists($target_file) || filemtime($target_file) < filemtime($source_file)){
             $file_content = file_get_contents($source_file);
             $compiled = $this->compile($file_content);
-            if(file_put_contents($target_file, $compiled) === false){
-                throw new Exception("Could not create $target_file");
+            if($this->caching){
+                if(file_put_contents($target_file, $compiled) === false){
+                    throw new Exception("Could not create $target_file");
+                }
+            } else {
+                return $compiled;
             }
         }
         // Vom Cache lesen
