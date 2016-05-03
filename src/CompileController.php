@@ -36,7 +36,7 @@ abstract class CompileController extends Controller
         }
         $this->response->setHeader("Content-Type", $this->response_type);
         // In den Cache schreiben
-        if(!file_exists($target_file) || filemtime($target_file) < filemtime($source_file) || $this->caching){
+        if(!file_exists($target_file) || filemtime($target_file) < filemtime($source_file) || !$this->caching){
             $file_content = file_get_contents($source_file);
             $compiled = $this->compile($file_content);
             if($this->caching){
