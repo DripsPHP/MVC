@@ -20,7 +20,7 @@ use Smarty;
  */
 class View extends Smarty
 {
-    public static $tmp_dir = "tmp/.views/";
+    public static $tmp_dir = "tmp/.views";
 
     public function __construct(){
         parent::__construct();
