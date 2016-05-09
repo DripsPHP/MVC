@@ -38,7 +38,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
             ["POST", true],
             ["DELETE", false],
             ["PATCH", false],
-            ["PUT", false]
+            ["PUT", false],
+            ["HEAD", false]
         );
     }
 }
