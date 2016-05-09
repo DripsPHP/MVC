@@ -37,7 +37,7 @@ abstract class Controller
 
         $method = $name.'Action';
         if (!method_exists($this, $method)) {
-            throw new MethodNotAllowedException();
+            throw new MethodNotAllowedException("Die Methode ".strtoupper($name)." ist nicht erlaubt!");
         }
         $buffer = new OutputBuffer();
         $buffer->start();
