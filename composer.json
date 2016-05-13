@@ -7,7 +7,8 @@
         "php": ">=5.4",
         "drips/http": ">=0.2",
         "drips/utils": ">=0.1",
-        "smarty/smarty": ">=3.1"
+        "smarty/smarty": ">=3.1",
+        "symfony/validator": "^3.0"
     },
     "autoload": {
         "psr-4": {
