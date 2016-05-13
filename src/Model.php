@@ -19,15 +19,8 @@ use Symfony\Component\Validator\Validation;
  */
 abstract class Model implements IValidate
 {
-    protected $validator;
-
-    public function __construct()
-    {
-        $this->validator = Validation::createValidatorBuilder()->addMethodMapping('loadValidatorMetadata')->getValidator();
-    }
-
     public function validate()
     {
-        return $this->validator->validate($this);
+        return Validation::createValidatorBuilder()->addMethodMapping('loadValidatorMetadata')->getValidator()->validate($this);
     }
 }
