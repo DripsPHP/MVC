@@ -50,3 +50,55 @@ Die View ist ein einfaches Template, in welchem Platzhalter definiert werden kö
 ```
 
 Für weitere Informationen bzgl. Templates siehe: [Smarty-Dokumentation](http://www.smarty.net/docs/en/).
+
+## Vorgefertigte Controller
+
+Das System verfügt bereits über vordefinierte Controller die nach Bedarf eingesetzt werden können.
+
+### CompileController
+
+Der CompileController ist dafür zuständig Dateien einer Zielsprache in Dateien einer Quellsprache zu übersetzen und auszuliefern. (selbstständlich mit Caching)
+
+Um den Controller verwenden zu können muss lediglich eine Klasse angelegt werden, die von der Klasse `Drips\MVC\CompileController` erbt. Anschließend muss der Controller noch entsprechend konfiguriert werden. Hierfür können folgende Klassenattribute gesetzt werden:
+
+```php
+<?php
+
+use Drips\MVC\CompileController;
+
+class MyCompileController extends CompileController
+{
+    // Legt das Verzeichnis fest, indem sich die Quelldateien befinden
+    protected $source_directory;
+    // Legt das Verzeichnis fest, wo die übersetzten Dateien abgelegt werden sollen (Cache-Verzeichnis!)
+    protected $target_directory = "tmp/compile";
+    // Legt die Dateiendung der Dateien im $source_directory fest
+    protected $file_extension;
+    // Legt den (HTTP-)Response-Type (MIME) fest
+    protected $response_type;
+    // Legt fest ob Caching aktiviert werden soll, oder nicht
+    protected $caching = false;
+}
+```
+
+### StaticPageController
+
+Der StaticPageController ist dafür zuständig statische Seiten auszuliefern. Dazu zählen beispielsweise das Impressum, eine Startseite oder ähnliches.
+
+Um den Controller verwenden zu können muss lediglich eine Klasse angelegt werden, die von der Klasse `Drips\MVC\StaticPageController` erbt. Anschließend muss der Controller noch entsprechend konfiguriert werden. Hierfür können folgende Klassenattribute gesetzt werden:
+
+```php
+<?php
+
+use Drips\MVC\StaticPageController;
+
+class MyStaticPageController extends StaticPageController
+{
+    // Legt das Verzeichnis fest, indem sich die Dateien befinden
+    protected $source_directory;
+    // Legt die Dateiendung der Dateien
+    protected $file_extension = "tpl";
+    // Legt den (HTTP-)Response-Type (MIME) fest
+    protected $response_type = "text/html";
+}
+```
