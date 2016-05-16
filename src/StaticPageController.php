@@ -11,7 +11,6 @@ abstract class StaticPageController extends Controller
     protected $source_directory;
     protected $file_extension = "tpl";
     protected $response_type = "text/html";
-    protected $caching = false;
 
     public function getAction(Request $request, $file)
     {
