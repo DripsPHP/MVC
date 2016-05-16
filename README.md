@@ -96,7 +96,7 @@ class MyStaticPageController extends StaticPageController
 {
     // Legt das Verzeichnis fest, indem sich die Dateien befinden
     protected $source_directory;
-    // Legt die Dateiendung der Dateien
+    // Legt die Dateiendung der Dateien fest
     protected $file_extension = "tpl";
     // Legt den (HTTP-)Response-Type (MIME) fest
     protected $response_type = "text/html";
