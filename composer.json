@@ -13,5 +13,6 @@
         "psr-4": {
             "Drips\\MVC\\": "src"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
