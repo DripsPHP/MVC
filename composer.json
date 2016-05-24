@@ -4,8 +4,8 @@
     "keywords": ["mvc", "model", "view", "controller"],
     "license": "MIT",
     "require": {
-        "drips/http": ">=0.2",
-        "drips/utils": ">=0.1",
+        "drips/http": "dev-master",
+        "drips/utils": "dev-master",
         "smarty/smarty": ">=3.1",
         "symfony/validator": "^3.0"
     },
