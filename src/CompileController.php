@@ -9,13 +9,16 @@ use Drips\Routing\Error404Exception;
 abstract class CompileController extends Controller
 {
     protected $source_directory;
-    protected $target_directory = "tmp/compile";
+    protected $target_directory = '.compiled';
     protected $file_extension;
     protected $response_type;
     protected $caching = false;
 
     public function getAction(Request $request, $file)
     {
+        if(defined('DRIPS_TMP')){
+            $this->target_directory = DRIPS_TMP.'/'.$this->target_directory;
+        }
         if(!is_dir($this->target_directory)){
             if(!mkdir($this->target_directory)){
                 throw new Exception("Could not create ".$this->target_directory);
