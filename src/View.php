@@ -20,11 +20,14 @@ use Smarty;
  */
 class View extends Smarty
 {
-    public static $tmp_dir = "tmp/.views";
+    public static $tmp_dir = '.views';
 
     public function __construct(){
         parent::__construct();
         // configure smarty
+        if(defined('DRIPS_TMP')){
+            static::$tmp_dir = DRIPS_TMP.'/'.static::$tmp_dir;
+        }
         $this->setTemplateDir(static::$tmp_dir.'/templates/');
         $this->setCompileDir(static::$tmp_dir.'/templates_c/');
         $this->setConfigDir(static::$tmp_dir.'/configs/');
