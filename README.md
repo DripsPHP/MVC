@@ -102,3 +102,34 @@ class MyStaticPageController extends StaticPageController
     protected $response_type = "text/html";
 }
 ```
+
+## View-Widgets
+
+Es können auch Widgets entwickelt werden, welche in einem Template verwendet werden können. Das Besondere an einem Widget ist, dass es nicht nur ein weiteres Template inkludiert, sondern gleichzeitig eine Funktionalität dahinter stecken kann, wie z.B.: das Abfragen von News:
+
+### Beispiel
+
+```php
+<?php
+
+namespace widgets;
+
+use Drips\MVC\IWidget;
+
+class News implements IWidget
+{
+    public function exec($params, $view){
+        $view->assign('news', array("1. Newseintrag", "2. Newseintrag", "3. Newseintrag"));
+        return $view->display(__DIR__.'/News.tpl');
+    }
+}
+```
+
+```html
+<h3>News</h3>
+{foreach $news as $new}
+    <p>{$new}</p>
+{foreachelse}
+    <p>Es sind keine Newseinträge vorhanden</p>
+{/foreach}
+```

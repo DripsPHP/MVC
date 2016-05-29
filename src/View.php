@@ -24,6 +24,7 @@ class View extends Smarty
 
     public function __construct(){
         parent::__construct();
+
         // configure smarty
         if(defined('DRIPS_TMP')){
             $this->tmp_dir = DRIPS_TMP.'/'.$this->tmp_dir;
@@ -32,5 +33,21 @@ class View extends Smarty
         $this->setCompileDir($this->tmp_dir.'/templates_c/');
         $this->setConfigDir($this->tmp_dir.'/configs/');
         $this->setCacheDir($this->tmp_dir.'/cache/');
+
+        // Widget-Plugin registrieren
+        $this->registerPlugin('function', 'widget', [$this, 'widgetPlugin']);
+    }
+
+    public function widgetPlugin($params, $view)
+    {
+        extract($params);
+        if(isset($name)){
+            if(class_exists($name)){
+                $widget = new $name;
+                if($widget instanceof IWidget){
+                    return $widget->exec($params, $view);
+                }
+            }
+        }
     }
 }
