@@ -133,3 +133,9 @@ class News implements IWidget
     <p>Es sind keine Newseinträge vorhanden</p>
 {/foreach}
 ```
+
+Anschließend kann das Widget im jeweiligen Template wie folgt aufgerufen werden:
+
+```
+{widget name="widgets\News"}
+```
