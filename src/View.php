@@ -29,7 +29,7 @@ class View extends Smarty
         if(defined('DRIPS_TMP')){
             $this->tmp_dir = DRIPS_TMP.'/'.$this->tmp_dir;
         }
-        $this->setTemplateDir($this->tmp_dir.'/templates/');
+        $this->setTemplateDir(DRIPS_SRC.'/views/');
         $this->setCompileDir($this->tmp_dir.'/templates_c/');
         $this->setConfigDir($this->tmp_dir.'/configs/');
         $this->setCacheDir($this->tmp_dir.'/cache/');
