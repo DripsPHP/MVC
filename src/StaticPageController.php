@@ -12,7 +12,7 @@ abstract class StaticPageController extends Controller
     protected $file_extension = "tpl";
     protected $response_type = "text/html";
 
-    public function getAction(Request $request, $file)
+    public function getAction($file)
     {
         if(!is_dir($this->source_directory) || !isset($this->file_extension, $this->response_type)){
             throw new Exception("Controller is not configured!");
