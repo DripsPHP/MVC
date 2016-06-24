@@ -9,6 +9,7 @@
 
 namespace Drips\MVC;
 
+use Drips\HTTP\Request;
 use Drips\HTTP\Response;
 use Drips\Utils\OutputBuffer;
 
@@ -22,6 +23,7 @@ use Drips\Utils\OutputBuffer;
 abstract class Controller
 {
     protected $view;
+    protected $request;
     protected $response;
 
     /**
@@ -33,6 +35,7 @@ abstract class Controller
     public function __construct($name, $params = array())
     {
         $this->view = new View();
+        $this->request = Request::getInstance();
         $this->response = new Response();
 
         $method = $name.'Action';
