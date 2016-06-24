@@ -14,7 +14,7 @@ abstract class CompileController extends Controller
     protected $response_type;
     protected $caching = false;
 
-    public function getAction(Request $request, $file)
+    public function getAction($file)
     {
         if(defined('DRIPS_TMP')){
             $this->target_directory = DRIPS_TMP.'/'.$this->target_directory;

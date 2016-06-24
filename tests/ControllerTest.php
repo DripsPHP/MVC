@@ -34,12 +34,12 @@ class ControllerTest extends PHPUnit_Framework_TestCase
     public function dataProvider()
     {
         return array(
-            ["GET", true],
-            ["POST", true],
-            ["DELETE", false],
-            ["PATCH", false],
-            ["PUT", false],
-            ["HEAD", false]
+            ['GET', true],
+            ['POST', true],
+            ['DELETE', false],
+            ['PATCH', false],
+            ['PUT', false],
+            ['HEAD', false]
         );
     }
 }
