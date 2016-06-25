@@ -38,7 +38,7 @@ class MyController extends Controller
     }
 }
 
-$controller = new MyController($_SERVER["REQUEST_METHOD"], array(new Request));
+$controller = new MyController($_SERVER["REQUEST_METHOD"]);
 ```
 
 > Üblicherweise werden Model und Controller in separaten Dateien gespeichert.
