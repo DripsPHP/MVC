@@ -19,6 +19,10 @@ use Drips\Utils\OutputBuffer;
  * Diese Klasse ist Bestandteil des MVC-Systems von Drips. Der Controller ist
  * zuständig für die Abarbeitung von eingehenden Requests und sollte dafür
  * mit den zugehörigen Models und Views zusammenarbeiten.
+ * 
+ * @property View $view
+ * @property Request $request
+ * @property Response $response
  */
 abstract class Controller
 {
