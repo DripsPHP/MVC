@@ -7,11 +7,11 @@ use Drips\HTTP\Request;
 
 class MyController extends Controller
 {
-    public function getAction(Request $request){
+    public function getAction(){
         echo "Hello World!";
         $this->smartyTest();
         echo "<pre>";
-        var_dump($request);
+        var_dump($this->request);
     }
 
     protected function smartyTest()
@@ -21,4 +21,4 @@ class MyController extends Controller
     }
 }
 
-$controller = new MyController($_SERVER["REQUEST_METHOD"], array(new Request));
+$controller = new MyController($_SERVER["REQUEST_METHOD"]);

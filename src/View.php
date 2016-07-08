@@ -10,6 +10,7 @@
 namespace Drips\MVC;
 
 use Smarty;
+use Drips\HTTP\Request;
 
 /**
  * Class View.
@@ -37,6 +38,8 @@ class View extends Smarty
         $this->setCompileDir($this->tmp_dir.'/templates_c/');
         $this->setConfigDir($this->tmp_dir.'/configs/');
         $this->setCacheDir($this->tmp_dir.'/cache/');
+
+        $this->assign('request', Request::getInstance());
 
         // Widget-Plugin registrieren
         $this->registerPlugin('function', 'widget', [$this, 'widgetPlugin']);
