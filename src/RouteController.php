@@ -28,7 +28,10 @@ abstract class RouteController
         $name = $this->request->getVerb();
         $this->response = new Response();
 
-        $action =  isset($params['action']) ? $params['action'] : 'index';
+        $action = 'index';
+        if(count($params) > 0){
+            $action = array_shift($params);
+        }
         $method = $name.ucfirst($action).'Action';
         if (!method_exists($this, $method)) {
             throw new Error404Exception("Die Methode '$method' existiert nicht!");
