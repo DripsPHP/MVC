@@ -2,8 +2,12 @@
 
 namespace Drips\MVC;
 
+use Drips\HTTP\Request;
+use Drips\HTTP\Response;
+use Drips\MVC\View;
 use Drips\Routing\Router;
 use Drips\Routing\Error404Exception;
+use Drips\Utils\OutputBuffer;
 
 abstract class RouteController
 {
