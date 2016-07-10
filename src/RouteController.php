@@ -1,6 +1,6 @@
 <?php
 
-namespace controllers;
+namespace Drips\MVC;
 
 use Drips\Routing\Router;
 use Drips\Routing\Error404Exception;
