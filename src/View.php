@@ -42,6 +42,7 @@ class View extends Smarty
         $this->setConfigDir($this->tmp_dir.'/configs/');
         $this->setCacheDir($this->tmp_dir.'/cache/');
 
+        $this->loadFilter(Smarty::FILTER_VARIABLE, 'htmlspecialchars');
         $this->assign('request', Request::getInstance());
 
         // Widget-Plugin registrieren
