@@ -11,6 +11,7 @@ namespace Drips\MVC;
 
 use Smarty;
 use Drips\HTTP\Request;
+use Drips\Utils\Event;
 
 /**
  * Class View.
@@ -21,6 +22,8 @@ use Drips\HTTP\Request;
  */
 class View extends Smarty
 {
+    use Event;
+
     protected $tmp_dir = '.views';
 
     public function __construct(){
@@ -43,6 +46,7 @@ class View extends Smarty
 
         // Widget-Plugin registrieren
         $this->registerPlugin('function', 'widget', [$this, 'widgetPlugin']);
+        static::call('create', $this);
     }
 
     public function widgetPlugin($params, $view)

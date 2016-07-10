@@ -4,6 +4,13 @@ include(__DIR__."/vendor/autoload.php");
 
 use Drips\MVC\Controller;
 use Drips\HTTP\Request;
+use Drips\MVC\View;
+
+/*
+View::on('create', function(){
+    echo 'Creating view ...';
+});
+*/
 
 class MyController extends Controller
 {
