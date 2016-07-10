@@ -8,7 +8,8 @@
         "drips/utils": "dev-master",
         "drips/form": "dev-master",
         "smarty/smarty": ">=3.1",
-        "symfony/validator": "^3.0"
+        "symfony/validator": "^3.0",
+        "drips/routing": "dev-master"
     },
     "autoload": {
         "psr-4": {

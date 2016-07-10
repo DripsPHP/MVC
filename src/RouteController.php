@@ -1,37 +1,19 @@
 <?php
 
-/**
- * Created by Prowect
- * Author: Raffael Kessler
- * Date: 02.04.2016 - 10:58.
- * Copyright Prowect.
- */
+namespace controllers;
 
-namespace Drips\MVC;
+use Drips\Routing\Router;
+use Drips\Routing\Error404Exception;
 
-use Drips\HTTP\Request;
-use Drips\HTTP\Response;
-use Drips\Utils\OutputBuffer;
-
-/**
- * Class Controller.
- *
- * Diese Klasse ist Bestandteil des MVC-Systems von Drips. Der Controller ist
- * zuständig für die Abarbeitung von eingehenden Requests und sollte dafür
- * mit den zugehörigen Models und Views zusammenarbeiten.
- *
- * @property View $view
- * @property Request $request
- * @property Response $response
- */
-abstract class Controller
+abstract class RouteController
 {
     protected $view;
     protected $request;
     protected $response;
+    protected $viewsDir = 'views';
 
     /**
-     * Erzeugt eine neue Controller-Instanz.
+     * Erzeugt eine neue RouteController-Instanz.
      *
      * @param array $params Parameter die an den jeweiligen Funktionsaufruf des Controllers übergeben werdens sollen
      */
@@ -42,13 +24,21 @@ abstract class Controller
         $name = $this->request->getVerb();
         $this->response = new Response();
 
-        $method = $name.'Action';
+        $action =  isset($params['action']) ? $params['action'] : 'index';
+        $method = $name.ucfirst($action).'Action';
         if (!method_exists($this, $method)) {
-            throw new MethodNotAllowedException("Die Methode ".strtoupper($name)." ist nicht erlaubt!");
+            throw new Error404Exception("Die Methode '$method' existiert nicht!");
         }
         $buffer = new OutputBuffer();
         $buffer->start();
         echo call_user_func_array(array($this, $method), $params);
+        if(defined('DRIPS_SRC') && $this->viewsDir == 'views'){
+            $this->viewsDir = DRIPS_SRC.'/views';
+        }
+        $viewname = $this->viewsDir.'/'.Router::getInstance()->getCurrent().'/'.$action.'.tpl';
+        if(file_exists($viewname)){
+            $this->view->display($viewname);
+        }
         $buffer->end();
 
         $this->response->body = $buffer->getContent();
