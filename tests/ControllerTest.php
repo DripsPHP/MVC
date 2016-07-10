@@ -23,8 +23,10 @@ class ControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testController($method, $result)
     {
+        $request = Request::getInstance();
+        $request->server->set('REQUEST_METHOD', $method);
         try {
-            $controller = new MyController($method);
+            $controller = new MyController;
             $this->assertTrue($result);
         } catch(MethodNotAllowedException $e){
             $this->assertFalse($result);
