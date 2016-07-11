@@ -34,7 +34,11 @@ abstract class RouteController
         }
         $method = $name.ucfirst($action).'Action';
         if (!method_exists($this, $method)) {
-            throw new Error404Exception("Die Methode '$method' existiert nicht!");
+            $method2 = $action.'Action';
+            if(!method_exists($this, $method2)){
+                throw new Error404Exception("Die Methode '$method' und '$method2' existiert nicht!");
+            }
+            $method = $method2;
         }
         $buffer = new OutputBuffer();
         $buffer->start();
