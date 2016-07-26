@@ -2,11 +2,11 @@
 
 namespace tests;
 
-use PHPUnit_Framework_TestCase;
 use Drips\MVC\Model;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use PHPUnit_Framework_TestCase;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class MyModel extends Model
 {

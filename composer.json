@@ -1,19 +1,23 @@
 {
-    "name": "drips/mvc",
-    "description": "PHP basiertes MVC-System",
-    "keywords": ["mvc", "model", "view", "controller"],
-    "license": "MIT",
-    "require": {
-        "drips/http": "^1.0",
-        "drips/utils": "^1.0",
-        "smarty/smarty": ">=3.1",
-        "symfony/validator": "^3.0",
-        "drips/routing": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {
-            "Drips\\MVC\\": "src"
-        }
-    },
-    "minimum-stability": "dev"
+  "name": "drips/mvc",
+  "description": "PHP basiertes MVC-System",
+  "keywords": [
+    "mvc",
+    "model",
+    "view",
+    "controller"
+  ],
+  "license": "MIT",
+  "require": {
+    "drips/http": "^1.0",
+    "drips/utils": "^1.0",
+    "smarty/smarty": ">=3.1",
+    "symfony/validator": "^3.0",
+    "drips/routing": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Drips\\MVC\\": "src"
+    }
+  }
 }

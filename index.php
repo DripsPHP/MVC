@@ -1,10 +1,8 @@
 <?php
 
-include(__DIR__."/vendor/autoload.php");
+include(__DIR__ . "/vendor/autoload.php");
 
 use Drips\MVC\Controller;
-use Drips\HTTP\Request;
-use Drips\MVC\View;
 
 /*
 View::on('create', function(){
@@ -14,7 +12,8 @@ View::on('create', function(){
 
 class MyController extends Controller
 {
-    public function getAction(){
+    public function getAction()
+    {
         echo "Hello World!";
         $this->smartyTest();
         echo "<pre>";

@@ -2,6 +2,7 @@
 
 namespace Drips\MVC;
 
-interface IValidate {
+interface IValidate
+{
     public function validate();
 }

@@ -2,17 +2,20 @@
 
 namespace tests;
 
-use PHPUnit_Framework_TestCase;
-use Drips\MVC\Controller;
 use Drips\HTTP\Request;
-use Drips\HTTP\Response;
+use Drips\MVC\Controller;
 use Drips\MVC\MethodNotAllowedException;
+use PHPUnit_Framework_TestCase;
 
 class MyController extends Controller
 {
-    public function getAction(){}
+    public function getAction()
+    {
+    }
 
-    public function postAction(){}
+    public function postAction()
+    {
+    }
 }
 
 
@@ -28,7 +31,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         try {
             $controller = new MyController;
             $this->assertTrue($result);
-        } catch(MethodNotAllowedException $e){
+        } catch (MethodNotAllowedException $e) {
             $this->assertFalse($result);
         }
     }

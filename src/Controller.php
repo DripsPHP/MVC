@@ -26,14 +26,28 @@ use Drips\Utils\OutputBuffer;
  */
 abstract class Controller
 {
+    /**
+     * @var View
+     */
     protected $view;
+
+    /**
+     * @var Request
+     */
     protected $request;
+
+    /**
+     * @var Response
+     */
     protected $response;
 
     /**
-     * Erzeugt eine neue Controller-Instanz.
+     * Erzeugt eine neue Controller-Instanz und führt die zugehörige Methode abhängig von der HTTP-Methode aus, sofern
+     * diese existiert. Die übergebenen Parameter werden an die Methode beim Aufruf übergeben.
      *
-     * @param array $params Parameter die an den jeweiligen Funktionsaufruf des Controllers übergeben werdens sollen
+     * @param array $params
+     *
+     * @throws MethodNotAllowedException
      */
     public function __construct($params = array())
     {
@@ -42,9 +56,9 @@ abstract class Controller
         $name = $this->request->getVerb();
         $this->response = new Response();
 
-        $method = $name.'Action';
+        $method = $name . 'Action';
         if (!method_exists($this, $method)) {
-            throw new MethodNotAllowedException("Die Methode ".strtoupper($name)." ist nicht erlaubt!");
+            throw new MethodNotAllowedException("Die Methode " . strtoupper($name) . " ist nicht erlaubt!");
         }
         $buffer = new OutputBuffer();
         $buffer->start();
